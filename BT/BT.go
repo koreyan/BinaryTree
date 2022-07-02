@@ -1,4 +1,4 @@
-package Binary
+package BT
 
 import "fmt"
 
@@ -30,7 +30,7 @@ func isThere(node *Node) bool {
 
 //                                tree start
 // head- Node pointing root -- root -  left node
-//          \ nil       \  right node
+//          \ nil                   \  right node
 
 // tree.head.Left points root instance
 func (tree *binaryTree) Search(data Element) (*Node, bool) {
@@ -45,6 +45,9 @@ func (tree *binaryTree) Remove(data Element) bool {
 
 	return remove(tree.head.Left, tree.head, data)
 
+}
+func (tree *binaryTree) PrintTree() {
+	print(tree.head.Left)
 }
 
 // For Search data in Binary Tree. if this function can't find data in tree, it returns nil and false otherwise adrress of node and true
@@ -139,4 +142,13 @@ func remove(currentNode *Node, parentNode *Node, target Element) bool {
 		}
 
 	}
+}
+
+func print(node *Node) {
+	if node == nil {
+		return
+	}
+	fmt.Print(node.Data, " ")
+	print(node.Left)
+	print(node.Right)
 }
